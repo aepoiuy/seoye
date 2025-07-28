@@ -11,9 +11,7 @@ app = Flask(__name__)
 CORS(app)
 
 # --- 챗봇 및 AI 공통 설정 ---
-# 1. 발급받은 Google AI API 키를 설정합니다.
 try:
-    # 서버(Render)에 저장된 비밀 키를 불러옵니다.
     GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
     genai.configure(api_key=GOOGLE_API_KEY)
 except Exception as e:
@@ -68,7 +66,7 @@ def handle_chat():
         print(f"챗봇 응답 생성 오류: {e}")
         return jsonify({"error": "챗봇과 대화하는 중 오류가 발생했습니다."}), 500
 
-# --- AI 채점 기능 (Gemini Vision으로 업그레이드) ---
+# --- AI 채점 기능 (Gemini Vision) ---
 @app.route("/analyze", methods=["POST"])
 def analyze_route():
     try:
@@ -78,12 +76,8 @@ def analyze_route():
         if not image_data:
             return jsonify({"error": "이미지가 없습니다."}), 400
 
-        # 1. 사용자 이미지 데이터 변환
-        header, encoded = image_data.split(",", 1)
-        image_data_decoded = base64.b64decode(encoded)
-        user_pil_img = Image.open(io.BytesIO(image_data_decoded))
+        user_pil_img = Image.open(io.BytesIO(base64.b64decode(image_data.split(",", 1)[1])))
 
-        # 2. Gemini AI에게 보낼 프롬프트(지침) 작성
         prompt = f"""
 # 역할 및 목표
 당신은 초등학생을 위한 AI 서예 선생님입니다. 당신의 목표는 학생들이 서예에 흥미를 잃지 않도록, 친절하고 격려하는 방식으로 판본체 붓글씨를 분석하고 피드백을 제공하는 것입니다.
