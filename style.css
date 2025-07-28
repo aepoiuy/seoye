@@ -913,13 +913,12 @@ body {
 
 .chat-wrapper {
     position: absolute;
-    top: 50%;
+    top: 20%;  /* 위에서 20%만큼 떨어짐 */
+    bottom: 20%; /* 아래에서 20%만큼 떨어짐 */
     left: 50%;
-    transform: translate(-50%, -50%);
-    /* 크기 설정 */
+    transform: translateX(-50%);
     width: 45%;
-    height: 90%; /* 내부 콘텐츠에 맞게 높이를 최대한 확보하되, */
-    max-height: 50vh; /* 화면 높이(viewport height)의 50%를 넘지 않도록 제한 */
+    /* height와 max-height 속성은 삭제합니다. */
     display: flex;
     flex-direction: column;
 }
