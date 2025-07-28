@@ -42,7 +42,7 @@ async function getAIFeedback() {
         feedbackContent.innerHTML = '<h2>AI가 분석 중입니다.</h2>';
 
         // 서버의 /analyze 주소로 요청을 보냅니다.
-        const response = await fetch('http://127.0.0.1:5000/analyze', {
+        const response = await fetch('https://seoye.onrender.com/analyze', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),

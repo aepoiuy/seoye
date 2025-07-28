@@ -58,7 +58,7 @@ async function sendMessage() {
     const loadingMessage = addMessage(selectedCalligrapher + ' 선생님', '생각 중...', 'bot-loading');
 
     try {
-        const response = await fetch('http://127.0.0.1:5000/chat', {
+        const response = await fetch('https://seoye.onrender.com/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
