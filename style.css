@@ -388,6 +388,7 @@ body {
     background-image: url('images/guide-lines.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    touch-action: none;
 }
 
 /* 8. 2x2 캔버스 그리드 스타일 */
@@ -405,6 +406,7 @@ body {
     background-image: url('images/guide-lines.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    touch-action: none;
 }
 
 /* 5. 챗봇 화면 스타일 */
@@ -589,12 +591,22 @@ body {
 
 /* --- 11. 미술관 갤러리 스타일 --- */
 .gallery-grid {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 55%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 0 15px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px; /* 내부 여백 추가 */
+    box-sizing: border-box; /* 패딩을 크기에 포함 */
+    margin: 0;
+    overflow-y: auto; /* 이 줄 추가 */
+    background-color: rgba(255, 255, 255, 0.7); /* 배경 추가 */
+    border-radius: 12px;
 }
 
 .gallery-item {
@@ -647,7 +659,8 @@ body {
 
 #image-preview-box {
     width: 100%;
-    height: 500px;
+    aspect-ratio: 1 / 1; /* 1:1 정사각형 비율 유지 */
+    height: auto; /* 높이는 비율에 맞게 자동 조절 */
     border: 3px dashed #adb5bd;
     border-radius: 12px;
     display: flex;
@@ -655,6 +668,7 @@ body {
     align-items: center;
     background-color: #f1f3f5;
     position: relative;
+    overflow: hidden; /* 내부 이미지가 넘치지 않도록 */
 }
 
 #image-preview {
@@ -904,13 +918,12 @@ body {
 
 .chat-wrapper {
     position: absolute;
-    /* 중앙 정렬을 위한 코드 */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     /* 크기 설정 */
     width: 45%;
-    height: 65%;
+    height: 55%;
     display: flex;
     flex-direction: column;
 }
@@ -1046,4 +1059,5 @@ body {
     background-color: white;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    touch-action: none;
 }
