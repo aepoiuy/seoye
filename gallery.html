@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미술관 - 서예마을에 혼저옵서예</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="content-screen">
+<div id="gallery-background-container">
+    <main class="gallery-grid">
+        <img src="images/gallery_1.png?text=작품+1" alt="서예 작품 1" class="gallery-item">
+        <img src="images/gallery_2.png?text=작품+2" alt="서예 작품 2" class="gallery-item">
+        <img src="images/gallery_3.png?text=작품+3" alt="서예 작품 3" class="gallery-item">
+        <img src="https://via.placeholder.com/300x300.png?text=작품+4" alt="서예 작품 4" class="gallery-item">
+        <img src="https://via.placeholder.com/300x300.png?text=작품+5" alt="서예 작품 5" class="gallery-item">
+        <img src="https://via.placeholder.com/300x300.png?text=작품+6" alt="서예 작품 6" class="gallery-item">
+    </main>
+
+    <a href="main.html" id="click-back-from-gallery"></a>
+    <a href="main.html" id="click-village-from-gallery"></a>
+</div>
+
+<div id="image-modal" class="modal-hidden">
+    <span id="close-image-modal" class="close-button">&times;</span>
+    <img id="modal-image" src="" alt="확대된 작품 이미지">
+</div>
+
+<script src="gallery.js"></script>
+</body>
+</html>
