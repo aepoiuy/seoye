@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>글자 연습하기 - 서예마을에 혼저옵서예</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="practice-screen">
+
+    <header class="page-header">
+        <img id="practice-title-image" src="" alt="연습 제목">
+    </header>
+
+<div class="practice-area">
+        <div class="video-container">
+            <iframe id="youtube-video" width="800" height="450" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <main id="canvas-wrapper" class="canvas-wrapper"></main>
+    </div>
+
+    <div class="controls">
+        <div class="tool-box">
+            <button id="brush-button" class="tool-button active">붓</button>
+            <button id="eraser-button" class="tool-button">지우개</button>
+        </div>
+        <div class="stroke-box">
+            <label for="stroke-width">굵기</label>
+            <input type="range" id="stroke-width" min="80" max="160" value="100">
+        </div>
+        <div class="function-box">
+            <button id="clear-button">모두 지우기</button>
+            <a href="word_practice_menu.html" class="home-button">뒤로 가기</a>
+            <a href="main.html" class="home-button">마을로 가기</a>
+        </div>
+    </div>
+
+    <script src="word_canvas_page.js"></script>
+</body>
+</html>

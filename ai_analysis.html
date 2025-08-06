@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>AI 분석 - 서예마을에 혼저옵서예</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="content-screen">
+
+<div class="analysis-background-container">
+    <div class="analysis-container">
+        <div class="preview-panel">
+            <div id="image-preview-box">
+                <img src="" id="image-preview" class="hidden" alt="업로드된 이미지 미리보기">
+                <span id="preview-text">이미지를 선택해주세요</span>
+            </div>
+            <div class="controls">
+                <div class="function-box">
+                    <input type="file" id="image-upload-input" accept="image/*" class="hidden">
+                    <label for="image-upload-input" class="home-button">이미지 선택</label>
+                    <button id="ai-feedback-button">AI 분석</button>
+            </div>
+            </div>
+        </div>
+
+        <div class="feedback-panel">
+            <div id="feedback-content">
+                <p>이곳에 AI 분석 결과가 표시됩니다</p>
+            </div>
+        </div>
+    </div>
+
+    <a href="practice_select.html" id="click-back-analysis"></a>
+    <a href="main.html" id="click-village-analysis"></a>
+</div>
+
+<script src="ai_analysis.js"></script>
+</body>
+</html>
