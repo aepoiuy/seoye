@@ -68,9 +68,9 @@ def handle_chat():
 
 # --- 예시 이미지 미리 불러오기 ---
 try:
-    # app.py의 상위 폴더에 있는 dataset 폴더를 기준으로 경로 설정
-    good_example_img = Image.open("../images/tree_good_1.jpg")
-    bad_example_img = Image.open("../images/tree_bad_1.jpg")
+    # app.py의 상위 폴더에 있는 images 폴더를 기준으로 경로 설정
+    good_example_img = Image.open("../images/tree_good_1.JPG")
+    bad_example_img = Image.open("../images/tree_bad_1.JPG")
 except Exception as e:
     print(f"예시 이미지 로드 실패: {e}")
     good_example_img, bad_example_img = None, None
@@ -94,9 +94,9 @@ def analyze_route():
         try:
             # good 이미지는 4개, bad 이미지는 6개를 불러옴
             for i in range(1, 5):
-                good_images.append(Image.open(f"../images/{word}_good_{i}.png"))
+                good_images.append(Image.open(f"../images/{word}_good_{i}.JPG"))
             for i in range(1, 7):
-                bad_images.append(Image.open(f"../images/{word}_bad_{i}.png"))
+                bad_images.append(Image.open(f"../images/{word}_bad_{i}.JPG"))
         except FileNotFoundError:
             print(f"'{word}'에 대한 예시 이미지를 찾을 수 없습니다.")
             pass
