@@ -71,7 +71,7 @@ def handle_chat():
 @app.route("/analyze", methods=["POST"])
 def analyze_route():
     try:
-        data = request.get.json()
+        data = request.get_json()
         image_data = data.get("image")
 
         if not image_data:
