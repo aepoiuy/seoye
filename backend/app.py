@@ -66,52 +66,26 @@ def handle_chat():
         print(f"챗봇 응답 생성 오류: {e}")
         return jsonify({"error": "챗봇과 대화하는 중 오류가 발생했습니다."}), 500
 
-# --- 예시 이미지 미리 불러오기 ---
-try:
-    # app.py의 상위 폴더에 있는 images 폴더를 기준으로 경로 설정
-    good_example_img = Image.open("../images/tree_good_1.JPG")
-    bad_example_img = Image.open("../images/tree_bad_1.JPG")
-except Exception as e:
-    print(f"예시 이미지 로드 실패: {e}")
-    good_example_img, bad_example_img = None, None
 
 # --- AI 채점 기능 (Gemini Vision) ---
 @app.route("/analyze", methods=["POST"])
 def analyze_route():
     try:
-        data = request.get_json()
+        data = request.get.json()
         image_data = data.get("image")
-        word = data.get("word")
 
-        if not image_data or not word:
-            return jsonify({"error": "필요한 데이터가 없습니다."}), 400
+        if not image_data:
+            return jsonify({"error": "이미지가 없습니다."}), 400
 
-        user_pil_img = Image.open(io.BytesIO(base64.b64decode(image_data.split(",", 1)[1])))
-
-        # 단어에 맞는 예시 이미지 동적으로 불러오기
-        good_images = []
-        bad_images = []
-        try:
-            # good 이미지는 4개, bad 이미지는 6개를 불러옴
-            for i in range(1, 5):
-                good_images.append(Image.open(f"../images/{word}_good_{i}.JPG"))
-            for i in range(1, 7):
-                bad_images.append(Image.open(f"../images/{word}_bad_{i}.JPG"))
-        except FileNotFoundError:
-            print(f"'{word}'에 대한 예시 이미지를 찾을 수 없습니다.")
-            pass
+        # 1. 사용자 이미지 데이터 변환
+        header, encoded = image_data.split(",", 1)
+        image_data_decoded = base64.b64decode(encoded)
+        user_pil_img = Image.open(io.BytesIO(image_data_decoded))
         
         prompt = f"""
 # 역할 및 목표
-당신은 초등학생을 위한 AI 서예 선생님입니다. 당신의 목표는 학생들이 서예에 흥미를 잃지 않도록, 친절하고 격려하는 방식으로 판본체 붓글씨를 분석하고 피드백을 제공하는 것입니다. 아래에 첨부된 여러 장의 '좋은 글씨'와 '아쉬운 글씨' 예시들을 기준으로, 마지막에 첨부된 학생의 글씨를 분석하고 피드백을 제공하세요.
+당신은 초등학생을 위한 AI 서예 선생님입니다. 당신의 목표는 학생들이 서예에 흥미를 잃지 않도록, 친절하고 격려하는 방식으로 판본체 붓글씨를 분석하고 피드백을 제공하는 것입니다.
 
-        ---
-        [좋은 글씨 예시들]
-        (첨부된 좋은 글씨 이미지들)
-
-        [아쉬운 글씨 예시들]
-        (첨부된 아쉬운 글씨 이미지들)
-        ---
 
 # 분석 기준
 첨부된 이미지의 붓글씨를 아래 판본체의 특징에 따라 분석해주세요:
@@ -126,13 +100,13 @@ def analyze_route():
 -   **격려 위주**: 학생이 아직 배우는 과정임을 감안하여, 잘한 점을 먼저 칭찬하고 아쉬운 점은 부드럽게 제안합니다.
 -   **초등학생 눈높이**: 어려운 서예 용어 대신 쉽고 구체적인 표현을 사용합니다.
 -   **형식**: 3-4 문장의 간결한 서술형 피드백으로만 답변합니다.
--   **금지사항**: 점수를 매기거나, 이미지에 어떤 글씨가 쓰여있는지 언급하지 않습니다. 반말을 사용하지 않습니다.
+-   **금지사항**: 점수를 매기지 않습니다. 반말을 사용하지 않습니다.
         """
-        content_list = [prompt] + good_images + bad_images + [user_pil_img]
+
         
-        # Gemini Vision 모델에게 전체 리스트 전달
+ # 3. Gemini Vision 모델에게 이미지와 프롬프트를 함께 전달
         vision_model = genai.GenerativeModel('gemini-1.5-flash')
-        response = vision_model.generate_content(content_list)
+        response = vision_model.generate_content([prompt, user_pil_img])
         
         message = response.text.strip()
         
