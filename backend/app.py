@@ -71,16 +71,15 @@ def handle_chat():
 @app.route("/analyze", methods=["POST"])
 def analyze_route():
     try:
-        data = request.get_json()
-        image_data = data.get("image")
+        # JSON이 아닌 form 데이터에서 'image_file' 이름의 파일을 가져옵니다.
+        if 'image_file' not in request.files:
+            return jsonify({"error": "이미지 파일이 없습니다."}), 400
 
-        if not image_data:
-            return jsonify({"error": "이미지가 없습니다."}), 400
+        image_file = request.files['image_file']
 
-        # 1. 사용자 이미지 데이터 변환
-        header, encoded = image_data.split(",", 1)
-        image_data_decoded = base64.b64decode(encoded)
-        user_pil_img = Image.open(io.BytesIO(image_data_decoded))
+        # 파일 데이터를 읽어서 PIL 이미지 객체로 바로 변환합니다.
+        # Base64 디코딩 과정이 더 이상 필요 없습니다.
+        user_pil_img = Image.open(image_file.stream)
         
         prompt = f"""
 # 역할 및 목표
