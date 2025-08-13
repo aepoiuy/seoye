@@ -1,9 +1,9 @@
 // --- 1. 각 글자별 영상 ID와 이미지 파일 '지도' ---
 
 const wordPracticeData = {
-    '나무': { titleImage: 'practice_title_7.png', videoId: 'Z3ivXIea8xk', images: ['practice_guide_17.png', 'practice_guide_18.png'] },
-    '고운소리': { titleImage: 'practice_title_8.png', videoId: '8sKgPc5nOUg', images: ['practice_guide_19.png', 'practice_guide_20.png', 'practice_guide_21.png', 'practice_guide_22.png'] },
-    '푸른하늘': { titleImage: 'practice_title_9.png', videoId: 'Sx95MdgWKYA', images: ['practice_guide_23.png', 'practice_guide_24.png', 'practice_guide_25.png', 'practice_guide_26.png'] },
+    '나무': { titleImage: 'practice_title_7.png', videoId: 'prtwis5X1Dk', images: ['practice_guide_17.png', 'practice_guide_18.png'] },
+    '고운소리': { titleImage: 'practice_title_8.png', videoId: 'gAy5-DdYK0M', images: ['practice_guide_19.png', 'practice_guide_20.png', 'practice_guide_21.png', 'practice_guide_22.png'] },
+    '푸른하늘': { titleImage: 'practice_title_9.png', videoId: 'tjJraA-OUGc', images: ['practice_guide_23.png', 'practice_guide_24.png', 'practice_guide_25.png', 'practice_guide_26.png'] },
     '기본': { videoId: 'DEFAULT_VIDEO_ID', images: [] } // 기본값
 };
 

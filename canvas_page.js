@@ -1,11 +1,11 @@
 // --- 1. 각 연습 항목에 맞는 영상 ID와 이미지 파일 '지도' ---
 const practiceData = {
-    '곧은획_1': { titleImage: 'practice_title_1.png' ,videoId: '1Uyj7-ilzRw', images: ['practice_guide_1.png', 'practice_guide_2.png'] },
-    '곧은획_2': { titleImage: 'practice_title_2.png', videoId: 'X0sCkWiONzw', images: ['practice_guide_3.png', 'practice_guide_4.png', 'practice_guide_5.png'] },
-    '꺾은획_1': { titleImage: 'practice_title_3.png', videoId: '8QXdhZ8iFQE', images: ['practice_guide_6.png', 'practice_guide_7.png', 'practice_guide_8.png'] },
-    '꺾은획_2': { titleImage: 'practice_title_4.png', videoId: 'J2ZRpkej2_k', images: ['practice_guide_9.png', 'practice_guide_10.png', 'practice_guide_11.png'] },
-    '비스듬한획': { titleImage: 'practice_title_5.png', videoId: 'F-YiVSfVYcw', images: ['practice_guide_12.png', 'practice_guide_13.png', 'practice_guide_14.png'] },
-    '굽은획': { titleImage: 'practice_title_6.png', videoId: '9NbhhJwMWIQ', images: ['practice_guide_15.png', 'practice_guide_16.png'] },
+    '곧은획_1': { titleImage: 'practice_title_1.png' ,videoId: 'zvHWRNWkUzw', images: ['practice_guide_1.png', 'practice_guide_2.png'] },
+    '곧은획_2': { titleImage: 'practice_title_2.png', videoId: 'r61Vr7niR8w', images: ['practice_guide_3.png', 'practice_guide_4.png', 'practice_guide_5.png'] },
+    '꺾은획_1': { titleImage: 'practice_title_3.png', videoId: '0iioM6Rqqwo', images: ['practice_guide_6.png', 'practice_guide_7.png', 'practice_guide_8.png'] },
+    '꺾은획_2': { titleImage: 'practice_title_4.png', videoId: 'e9V64mS3UmQ', images: ['practice_guide_9.png', 'practice_guide_10.png', 'practice_guide_11.png'] },
+    '비스듬한획': { titleImage: 'practice_title_5.png', videoId: 'WMIJ7W0XxO4', images: ['practice_guide_12.png', 'practice_guide_13.png', 'practice_guide_14.png'] },
+    '굽은획': { titleImage: 'practice_title_6.png', videoId: 'r3sPDzKF6Fk', images: ['practice_guide_15.png', 'practice_guide_16.png'] },
     '기본': { title: '기본', videoId: 'DEFAULT_VIDEO_ID', images: [] }
 };
 
