@@ -71,16 +71,16 @@ def handle_chat():
 @app.route("/analyze", methods=["POST"])
 def analyze_route():
     try:
-        # JSON이 아닌 form 데이터에서 'image_file' 이름의 파일을 가져옵니다.
+        # 1. 'image_file' 키가 있는지 확인
         if 'image_file' not in request.files:
-            return jsonify({"error": "이미지 파일이 없습니다."}), 400
+            return jsonify({"error": "이미지 파일이 form-data에 없습니다."}), 400
 
         image_file = request.files['image_file']
 
-        # 파일 데이터를 읽어서 PIL 이미지 객체로 바로 변환합니다.
-        # Base64 디코딩 과정이 더 이상 필요 없습니다.
+        # 2. 파일 스트림을 사용해 PIL 이미지로 열기
         user_pil_img = Image.open(image_file.stream)
         
+        # 3. 프롬프트 정의        
         prompt = f"""
 # 역할 및 목표
 당신은 초등학생을 위한 AI 서예 선생님입니다. 당신의 목표는 학생들이 서예에 흥미를 잃지 않도록, 친절하고 격려하는 방식으로 판본체 붓글씨를 분석하고 피드백을 제공하는 것입니다.
